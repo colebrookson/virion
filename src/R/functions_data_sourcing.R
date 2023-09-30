@@ -86,6 +86,6 @@ download_globi <- function(globi_loc) {
   # now only keep unique records and write the file 
   all <- unique(all)
   
-  readr::write_csv(all, paste0(out_loc, "GLOBI-raw.csv"))
+  readr::write_csv(all, paste0(globi_loc, "GLOBI-raw.csv"))
   
 }

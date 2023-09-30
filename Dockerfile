@@ -8,21 +8,21 @@ ENV R_VERSION=4.2.3
 ENV R_HOME=/usr/local/lib/R
 ENV TZ=Etc/UTC
 
-COPY scripts/install_R_source.sh /temp_scripts/install_R_source.sh
+COPY /src/sh/install_R_source.sh /temp_scripts/install_R_source.sh
 
 RUN /temp_scripts/install_R_source.sh
 ENV CRAN=https://packagemanager.posit.co/cran/__linux__/jammy/2023-04-20
 ENV LANG=en_US.UTF-8
 
 # Copy all the files from the virion repo 
-COPY /Code/
-COPY /Intermediate/
-COPY /Source/
-COPY /Virion/
-COPY /Figures/
+COPY /Code/ /Code/
+COPY /Intermediate/ /Intermediate/
+COPY /Source/ /Source/
+COPY /Virion/ /Virion/
+COPY /Figures/ /Figures/
 
 # set up R 
-COPY scripts/setup_R.sh /temp_scripts/setup_R.sh
+COPY /src/sh/setup_R.sh /temp_scripts/setup_R.sh
 RUN /temp_scripts/setup_R.sh
 
 # do the R things we want
@@ -31,7 +31,7 @@ RUN R -e "Sys.setenv("NOT_CRAN" = TRUE); Sys.setenv("LIBARROW_MINIMAL" = FALSE);
 RUN R -e "devtools::install_github('ropensci/rglobi')"
 
 # set up Julia
-COPY scripts/install_julia.sh /temp_scripts/install_julia.sh
+COPY /src/sh/install_julia.sh /temp_scripts/install_julia.sh
 RUN /temp_scripts/install_julia.sh
 
 CMD ["julia", "R"]

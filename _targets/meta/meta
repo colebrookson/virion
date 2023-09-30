@@ -1,3 +1,5 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 download_genbank|function|d6a6a36904cd7584|||||||||||||||
+download_globi|function|87dd1bac09dd6cdb|||||||||||||||
 genbank_download|stem|5397c2150df0167d|b9bb64252d437722|ee131363cbe4bd80|-551340301||t19630.1559097176s|732953ce162997ef|48107152|rds|local|vector|||101.445||
+globi_download|stem|04442b45d8c0b53e|b59ca015e9a1c877|0b9324a3de6b0782|-1536601833||t19630.2065201803s|a8b5f4a9a4f279d0|983746|rds|local|vector|||59.608||

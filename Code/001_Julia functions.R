@@ -1,4 +1,4 @@
-#' Install Julia packages to use the functions for NCBI ========================
+#' Install Julia packages to use the functions for NCBI
 #' 
 #' Here we use the JuliaCall library to get the funcitons we need 
 
