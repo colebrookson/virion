@@ -30,3 +30,5 @@ wc5/alt.bil
 wc5/alt.hdr
 Source/AllNuclMetadata.csv
 Source/AllNuclMetadata.csv.gz
+data/web-sourced/AllNuclMetadata.csv.gz
+data/intermediate/sequences.csv
