@@ -1,0 +1,3 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+download_genbank|function|d6a6a36904cd7584|||||||||||||||
+genbank_download|stem|5397c2150df0167d|b9bb64252d437722|ee131363cbe4bd80|-551340301||t19630.1559097176s|732953ce162997ef|48107152|rds|local|vector|||101.445||

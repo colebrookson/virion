@@ -12,9 +12,9 @@ library(targets)
 library(tarchetypes)
 library(here)
 
-source(here::here("./R/functions_data_sourcing.R"))
+source(here::here("./src/R/functions_data_sourcing.R"))
 
-tar_option_set(packages = c("here", ))
+tar_option_set(packages = c("here", "vroom", "data.table", "magrittr"))
 options(dplyr.summarise.inform = FALSE)
 
 list(
@@ -23,6 +23,8 @@ list(
     download_genbank(
       url = paste0(
         "https://ftp.ncbi.nlm.nih.gov/genomes/Viruses/AllNuclMetadata/",
-        "AllNuclMetadata.csv.gz")
+        "AllNuclMetadata.csv.gz"),
+      ncbi_loc = here::here("./data/web-sourced/"),
+      out_loc = here::here("./data/intermediate/")
     ))
 )
