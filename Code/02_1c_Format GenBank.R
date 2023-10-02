@@ -13,7 +13,8 @@ if(!exists("jvdict")) {source(here::here("./Code/001_Julia functions.R"))}
 # Attaching GenBank
 gb <- vroom::vroom(
   here::here("./Intermediate/Unformatted/GenBankUnformatted.csv.gz"))
-
+print("read")
+gc()
 # structure ====================================================================
 
 temp <- data.frame(Host = character(),
@@ -51,24 +52,25 @@ temp <- data.frame(Host = character(),
                    stringsAsFactors = FALSE)
 
 ## deal with naming and conventions ============================================
-gb %<>% 
-  dplyr::rename(NCBIAccession = "Accession") %>% 
-  dplyr::rename(Release_Date = Release_Date) %>% # not sure what this is doing?
-  dplyr::mutate_at("Release_Date", ~.x %>% # Modifying date column to make sense
-                     stringr::str_split("T") %>% # Splitting at this midpoint
-                     purrr::map_chr(1) %>% # Taking the first component 
-                     lubridate::ymd() # Coding as YMD (shouldn"t throw errors)
-  ) 
+# gb %<>% 
+#   dplyr::rename(NCBIAccession = "Accession") %>% 
+#   dplyr::rename(Release_Date = Release_Date) %>% # not sure what this is doing?
+#   dplyr::mutate_at("Release_Date", ~.x %>% # Modifying date column to make sense
+#                      stringr::str_split("T") %>% # Splitting at this midpoint
+#                      purrr::map_chr(1) %>% # Taking the first component 
+#                      lubridate::ymd() # Coding as YMD (shouldn"t throw errors)
+#   ) 
 
 gb[, c(paste0("Collection", c("Year", "Month", "Day")))] <- 
   data.table::tstrsplit(gb$Collection_Date, "-", 
                         names=paste0("Collection", 
                                      c("Year", "Month", "Day"))) 
+gc()
 gb[, c(paste0("Release", c("Year", "Month", "Day")))] <- 
   data.table::tstrsplit(gb$Release_Date, "-", 
                         names=paste0("Release", 
                                      c("Year", "Month", "Day"))) 
-
+gc()
 gb %<>% 
   dplyr::mutate_at(dplyr::vars(tidyselect::matches("Year|Month|Day")), 
                    as.numeric) %>% 
