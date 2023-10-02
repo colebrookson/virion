@@ -1,3 +1,4 @@
+import Pkg
 Pkg.activate("~/Code/Code_Dev/")
 using DataFrames
 using NCBITaxonomy
