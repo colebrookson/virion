@@ -7,7 +7,7 @@
 
 #' mutate_cond
 #' 
-#' @description a base R / dplyr mashup to do some data manipulation
+#' @description a base R / dplyr mashup to do some data manipulation 
 #' 
 #' @param .data implied data object that we need 
 #' @param condition the condition that we're checking 
